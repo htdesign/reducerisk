@@ -12,52 +12,88 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <!-- NAVIGATION -->
-    <section class="w-full bg-rtr-green-dark xl:bg-rtr-green flex px-8 py-6 uppercase font-bold text-sm tracking-wider text-white justify-between">
-        <a href="#" class="">
-            <img src="./img/logo-wordmark.svg" class="block w-18 h-auto xl:hidden" alt="Reduce the Risk">     
-            <img src="./img/logo.svg" class="block w-18 h-auto hidden xl:block" alt="Reduce the Risk">
-        </a>
-        <nav class="flex items-end justify-center space-x-8 flex-grow hidden xl:inline-flex">
-            <a href="#_" class="">
-                <span class="block text-white">Home</span>
+    <!-- NAVBAR -->
+    <section class="w-full bg-rtr-green-dark z-50 xl:flex xl:flex-row xl:items-baseline" x-data="{ open: false }">
+        <div class="flex flex-row items-center justify-between px-8 py-6">
+            <a href="#">
+                <img src="./img/logo-wordmark.svg" class="block w-18 h-auto xl:hidden" alt="Reduce the Risk">
+                <img src="./img/logo.svg" class="block w-18 h-auto hidden xl:block" alt="Reduce the Risk">
             </a>
-            <a href="#_" class="">
-                <span class="inline-block">Modes of Transport</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </a>
-            <a href="#_" class="">
-                <span class="inline-block">Safety</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </a>
-            <a href="#_" class="">
-                <span class="block">Educators</span>
-            </a>
-            <a href="#_" class="">
-                <span class="block">Drivers Licensing</span>
-            </a>
-            <a href="#_" class="">
-                <span class="inline-block">Stories</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </nav>
-        <div class="flex items-end inline-flex space-x-4 sm:space-x-8 uppercase font-bold">
-            <a href="#" class="hidden xl:block">Contact Us</a>
-            <a href="#" class="p-2 xl:p-0 bg-rtr-green">
-                <img src="./img/search.svg" class="w-6" alt="">
-            </a>
-            <a href="#" class="p-2 bg-rtr-green xl:hidden">
-                <img src="./img/hamburger.svg" class="w-6" alt="">
+            <a href="#" class="xl:hidden hover:bg-rtr-green p-2" @click="open = !open">
+                <img src="./img/hamburger.svg" class="w-6" alt="" x-show="!open">
+                <img src="./img/close.svg" class="w-6" alt="" x-show="open" >
             </a>
         </div>
+        <nav :class="{'flex absolute': open, 'hidden': !open}" class="w-full xl:relative bg-rtr-green uppercase font-bold text-base tracking-wider py-4 flex flex-col xl:flex xl:flex-row xl:bg-rtr-green-dark">
+            <div class="flex flex-col xl:flex-row xl:flex-grow">
+                <a href="#" class="block text-white px-8 py-2">
+                    <span >Home</span>
+                </a>
+                <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="uppercase font-bold">
+                        <div class="block text-white px-8 py-2 inline-block">Modes of Transport</span>
+                        <img src="./img/arrow-down.svg" class="inline-block h-5 w-5" alt="">
+                    </button>
+                    <div x-show="open" class="xl:absolute left-2 xl:w-60">
+                        <div class="px-12 xl:px-2 xl:py-2 py-2 bg-rtr-green text-white">
+                            <a class="block px-4 py-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #1</a>
+                            <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #2</a>
+                            <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #3</a>
+                        </div>
+                    </div>
+                </div>
+                <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="uppercase font-bold">
+                        <div class="text-white px-8 py-2 inline-block">Safety</span>
+                        <img src="./img/arrow-down.svg" class="inline-block h-5 w-5" alt="">
+                    </button>
+                    <div x-show="open" class="xl:absolute left-2 xl:w-60">
+                        <div class="px-12 xl:px-2 xl:py-2 py-2 bg-rtr-green text-white">
+                            <a class="block px-4 py-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #1</a>
+                            <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #2</a>
+                            <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #3</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="block text-white px-8 py-2">
+                    <span>Educators</span>
+                </a>
+                <a href="#" class="block text-white px-8 py-2">
+                    <span>Drivers Licensing</span>
+                </a>
+                <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="uppercase font-bold outline-none">
+                        <div class="block text-white px-8 py-2 inline-block">Stories</span>
+                        <img src="./img/arrow-down.svg" class="inline-block h-5 w-5" alt="">
+                    </button>
+                    <div x-show="open" class="xl:absolute left-2 xl:w-60 font-normal">
+                        <div class="px-12 xl:px-2 xl:py-2 py-2 bg-rtr-green text-white xl:flex xl:flex-col">
+                            <a class="block px-4 py-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #1</a>
+                            <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #2</a>
+                            <a class="block px-4 py-2 mt-2 text-base font-semibold bg-transparent md:mt-0 hover:text-white focus:text-white hover:bg-rtr-green-dark focus:bg-rtr-green-dark focus:outline-none focus:shadow-outline"
+                                href="#">Link #3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col xl:flex-row uppercase font-bold text-white">
+                <a href="#" class="block px-8 py-2">Contact Us</a>
+                <a href="#" class="block px-8 py-2">
+                    <img src="./img/search.svg" class="w-6" alt="">
+                </a>
+            </div>
+
+        </nav>
     </section>
-    <!-- END NAVIGATION -->
+    <!-- END NAVBAR -->
 
 
     <!-- MASTHEAD -->
