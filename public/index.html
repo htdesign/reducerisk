@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
     <!-- NAVBAR -->
     <section class="w-full bg-rtr-green-dark z-50 xl:flex xl:flex-row xl:items-baseline" x-data="{ open: false }">
         <div class="flex flex-row items-center justify-between px-8 py-6">
@@ -24,13 +25,13 @@
                 <img src="./img/close.svg" class="w-6" alt="" x-show="open" >
             </a>
         </div>
-        <nav :class="{'flex absolute': open, 'hidden': !open}" class="w-full xl:relative bg-rtr-green uppercase font-bold text-base tracking-wider py-4 flex flex-col xl:flex xl:flex-row xl:bg-rtr-green-dark">
+        <nav :class="{'flex absolute': open, 'hidden': !open}" class="w-full bg-rtr-green uppercase font-bold text-base tracking-wider py-4 flex flex-col xl:flex xl:flex-row xl:bg-rtr-green-dark">
             <div class="flex flex-col xl:flex-row xl:flex-grow">
                 <a href="#" class="block text-white px-8 py-2">
                     <span >Home</span>
                 </a>
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="uppercase font-bold">
+                    <button @click="open = !open" class="uppercase font-bold outline-none w-full text-left">
                         <div class="block text-white px-8 py-2 inline-block">Modes of Transport</span>
                         <img src="./img/arrow-down.svg" class="inline-block h-5 w-5" alt="">
                     </button>
@@ -46,7 +47,7 @@
                     </div>
                 </div>
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="uppercase font-bold">
+                    <button @click="open = !open" class="uppercase font-bold outline-none w-full text-left">
                         <div class="text-white px-8 py-2 inline-block">Safety</span>
                         <img src="./img/arrow-down.svg" class="inline-block h-5 w-5" alt="">
                     </button>
@@ -68,7 +69,7 @@
                     <span>Drivers Licensing</span>
                 </a>
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="uppercase font-bold outline-none">
+                    <button @click="open = !open" class="uppercase font-bold outline-none w-full text-left">
                         <div class="block text-white px-8 py-2 inline-block">Stories</span>
                         <img src="./img/arrow-down.svg" class="inline-block h-5 w-5" alt="">
                     </button>
@@ -196,13 +197,13 @@
                     <a href="#" class="bg-rtr-red h-8 w-8 rounded-full bg-no-repeat bg-center" style="background-image: url('./img/youtube.svg')"></a>
                 </div>
                 <div>
-                    <p class="opacity-30">Copyright © 2019 Waikato Regional Council. All Rights Reserved</p>
+                    <p class="text-center lg:text-left opacity-30">Copyright © 2019 Waikato Regional Council. All Rights Reserved</p>
                 </div>
-                <div class="flex-grow">
-                    <ul>
-                        <li class="inline-block px-4 border-r border-opacity-30 border-white"><a href="#">Accessibility</a></li>
-                        <li class="inline-block px-4 border-r border-white border-opacity-30"><a href="#">Privacy</a></li>
-                        <li class="inline-block px-4"><a href="#">Copyright</a></li>
+                <div class="w-full lg:flex-grow">
+                    <ul class="flex justify-center">
+                        <li class="px-4 border-r border-opacity-30 border-white"><a href="#">Accessibility</a></li>
+                        <li class="px-4 border-r border-white border-opacity-30"><a href="#">Privacy</a></li>
+                        <li class="px-4"><a href="#">Copyright</a></li>
                     </ul>
                 </div>
             </div>
